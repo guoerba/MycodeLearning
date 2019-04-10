@@ -1,0 +1,16 @@
+A000;Cholera due to Vibrio cholerae 01, biovar cholerae;
+A001;Cholera due to Vibrio cholerae 01, biovar eltor;
+A009;Cholera, unspecified;
+A0100;Typhoid fever, unspecified;
+A0101;Typhoid meningitis;
+A0102;Typhoid fever with heart involvement;
+A0103;Typhoid pneumonia;
+A0104;Typhoid arthritis;
+A0105;Typhoid osteomyelitis;
+A0109;Typhoid fever with other complications;
+A011;Paratyphoid fever A;
+A012;Paratyphoid fever B;
+A013;Paratyphoid fever C;
+A014;Paratyphoid fever, unspecified;
+A020;Salmonella enteritis;
+A021;Salmonella sepsis;
