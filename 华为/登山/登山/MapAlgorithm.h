@@ -44,6 +44,7 @@ public:
 private:
 	node ***data;
 	int size;
+	int drow, dcolumn;
 };
 
 class MapAlgorithm

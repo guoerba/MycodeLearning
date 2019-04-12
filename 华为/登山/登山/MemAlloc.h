@@ -107,7 +107,7 @@ std::vector<T> **CreateArray2D(int row, int col)
 }
 
 template<class T>
-T **CreateArray2D(int row, int col, std::function<T(int,int)> f)
+T **CreateArray2D(int row, int col, std::function<T(int, int)> f)
 {
 	T **p = new T*[row];
 	*p = new T[row*col];
@@ -115,7 +115,20 @@ T **CreateArray2D(int row, int col, std::function<T(int,int)> f)
 		p[i] = *p + i * col;
 	for (int i = 0; i < row; i++)
 		for (int j = 0; j < col; j++)
-			p[i][j] = f(i,j);
+			p[i][j] = f(i, j);
+	return p;
+}
+
+template<class T>
+T **CreateArray2D(int row, int col,T **a, std::function<T(int,int,T**)> f)
+{
+	T **p = new T*[row];
+	*p = new T[row*col];
+	for (int i = 0; i < row; i++)
+		p[i] = *p + i * col;
+	for (int i = 0; i < row; i++)
+		for (int j = 0; j < col; j++)
+			p[i][j] = f(i,j,a);
 	return p;
 }
 

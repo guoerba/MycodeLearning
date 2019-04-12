@@ -1,7 +1,7 @@
 ﻿  AdjacentList.cpp
   AdjacentMatrix.cpp
-  main.cpp
   MapAlgorithm.cpp
-  MemAlloc.cpp
+  main.cpp
   正在生成代码...
+  LINK : 没有找到 G:\刷题\-\华为\登山\Debug\登山.exe 或上一个增量链接没有生成它；正在执行完全链接
   登山.vcxproj -> G:\刷题\-\华为\登山\Debug\登山.exe

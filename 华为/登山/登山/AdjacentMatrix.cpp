@@ -15,14 +15,23 @@ AdjacentMatrix::AdjacentMatrix(int **array, int row, int col)
 	column = col + 2;
 	size = (row + 2) * (col + 2);
 	data = CreateArray2D<int>(size, size,0);
-	int **p = CreateArray2D<int>(row + 2, col + 2, -1);//辅助矩阵,简化运算
+	int **p = CreateArray2D<int>(row + 2, col + 2, 
+		[&](int i, int j)->int{
+		if (i == 0 || i == row + 1)
+			return -1;
+		if (j == 0 || j == col + 1)
+			return -1;
+		return array[i - 1][j - 1];
+	});
+
+	/*int **p = CreateArray2D<int>(row + 2, col + 2, -1);//辅助矩阵,简化运算
 	for (int i = 0; i < row; i++)//只考虑相邻点之间形成最短路径
 	{
 		for (int j = 0; j < col; j++)
 		{
 			p[i + 1][j + 1] = array[i][j];
 		}
-	}
+	}*/
 	for (int i = 0; i < row ; i++)
 	{
 		for (int j = 0; j < col; j++)
