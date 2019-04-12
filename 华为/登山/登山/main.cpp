@@ -3,80 +3,28 @@
 #include <vector>
 #include <stack>
 #include <algorithm>
-
-template<class T>
-T **CreateArray2D(int row, int col, T initialize)
-{
-	T **p = new T*[row];
-	*p = new T[row*col];
-	for (int i = 0; i < row; i++)
-		p[i] = *p + i * col;
-	for (int i = 0; i < row; i++)
-		for (int j = 0; j < col; j++)
-			p[i][j] = initialize;
-	return p;
-}
-
-template<class T>
-std::vector<T> **CreateArray2D(int row, int col)
-{
-	std::vector<T> **p = new std::vector<T>*[row];
-	*p = new std::vector<T>[row*col];
-	for (int i = 0; i < row; i++)
-		p[i] = *p + i * col;
-	for (int i = 0; i < row; i++)
-		for (int j = 0; j < col; j++)
-			p[i][j] = std::vector<T>();
-	return p;
-}
-
-
-template<class T>
-void DeleteArray2D(T **p)
-{
-	delete[] * p;
-	delete[] p;
-	p = NULL;
-}
-
-struct Coordinate {
-	int X;
-	int Y;
-	Coordinate(int x,int y):X(x),Y(y){}
-	Coordinate():X(0),Y(0){}
-};
+#include "MapAlgorithm.h"
+//
+int TestMap[][5] = { {0,1,0,0,0},{0,2,3,0,0},{0,0,4,0,0},{0,0,5,6,7},{0,0,0,9,8} };
+int Test[][2] = { {1,0},{2,3} };
 
 int main()
 {
-	int N, M;
-	std::cin >> N >> M;
-	int **a = CreateArray2D<int>(N, M,0);
-	for (int i = 0; i < N; i++)
+	int **p = CreateArray2D<int>(5,5,0);
+	for (int i = 0; i < 5; i++)
 	{
-		for (int j = 0; j < M; j++)
-		{
-			std::cin >> a[i][j];
-		}
+		for (int j = 0; j < 5; j++)
+			p[i][j] = TestMap[i][j];
 	}
-	int X,Y,Z,W;
-	std::cin >> X >> Y >> Z >> W;
-
-	/*for (int i = 0; i < N; i++)
+	AdjacentMatrix am(p,5, 5);
+	/*for (int i = 0; i < 2; i++)
 	{
-		for (int j = 0; j < M; j++)
-		{
-			std::cout << a[i][j] << " ";
-		}
-		std::cout << std::endl;
-	}*/
-
+		for (int j = 0; j < 2; j++)
+			p[i][j] = TestMap[i][j];
+	}
+	AdjacentMatrix am(p,2, 2);*/
 
 	while (1);
-	delete(a);
+	delete(p);
 	return 0;
-}
-
-void DFS(int **a, Coordinate s, Coordinate e)
-{
-	
 }

@@ -115,7 +115,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AdjacentMatrix.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MapAlgorithm.cpp" />
+    <ClCompile Include="MemAlloc.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="MapAlgorithm.h" />
+    <ClInclude Include="MemAlloc.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
