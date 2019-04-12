@@ -1,7 +1,5 @@
 #include "MapAlgorithm.h"
 
-
-
 MapAlgorithm::MapAlgorithm()
 {
 }

@@ -1,6 +1,7 @@
 #pragma once
 #include <vector>
 #include <string>
+#include <functional>
 
 typedef std::vector<std::string>	StringBuffer;
 typedef std::string					String;
@@ -102,6 +103,19 @@ std::vector<T> **CreateArray2D(int row, int col)
 	for (int i = 0; i < row; i++)
 		for (int j = 0; j < col; j++)
 			p[i][j] = std::vector<T>();
+	return p;
+}
+
+template<class T>
+T **CreateArray2D(int row, int col, std::function<T(int,int)> f)
+{
+	T **p = new T*[row];
+	*p = new T[row*col];
+	for (int i = 0; i < row; i++)
+		p[i] = *p + i * col;
+	for (int i = 0; i < row; i++)
+		for (int j = 0; j < col; j++)
+			p[i][j] = f(i,j);
 	return p;
 }
 

@@ -115,6 +115,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AdjacentList.cpp" />
     <ClCompile Include="AdjacentMatrix.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MapAlgorithm.cpp" />
