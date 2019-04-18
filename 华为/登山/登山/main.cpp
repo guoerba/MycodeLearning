@@ -17,6 +17,7 @@ int main()
 			p[i][j] = TestMap[i][j];
 	}
 	AdjacentMatrix am(p,5, 5);
+	AdjacentList al(p, 5, 5);
 	/*for (int i = 0; i < 2; i++)
 	{
 		for (int j = 0; j < 2; j++)

@@ -1,14 +1,27 @@
 #include "MapAlgorithm.h"
 
-
-
-
-
 AdjacentList::AdjacentList()
 {
 }
 
-AdjacentList::AdjacentList(int ** array, int row, int col)
+AdjacentList::AdjacentList(int ** array, int row
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	\
+	
+	
+	
+	
+	
+	, int col)
 	: drow(row),dcolumn(col)
 {
 	size = (row + 2) * (col + 2);
@@ -20,13 +33,23 @@ AdjacentList::AdjacentList(int ** array, int row, int col)
 			return -1;
 		return array[i - 1][j - 1];
 	});
-	
+	/*std::cout << "------------------------------------------------------" << std::endl;
+	for (int i = 0; i < row + 2; i++)
+	{
+		for (int j = 0; j < col + 2; j++)
+		{
+			std::cout << p[i][j] << '\t';
+		}
+		std::cout << std::endl;
+	}
+	std::cout << "------------------------------------------------------" << std::endl;*/
 	data = CreateArray2D<node*>(row, col,
-		[&](int i, int j)->node* {
+		[&](int r, int c)->node* {
 		node *head = NULL,*now = NULL;
+		int i = r + 1, j = c + 1;
 		if (p[i][j] < p[i][j - 1])		//左	
 		{
-			head = new node(i, j-1, 0);
+			head = new node(r, c-1, 0);
 			now = head;
 			//data[CoordinatetoPointID(i, j - 1)][CoordinatetoPointID(i, j)] = 1;
 		}
@@ -34,12 +57,12 @@ AdjacentList::AdjacentList(int ** array, int row, int col)
 		{
 			if (head)
 			{
-				now->next = new node(i, j+1, 0);
+				now->next = new node(r, c+1, 0);
 				now = now->next;
 			}
 			else
 			{
-				head = new node(i, j+1, 0);
+				head = new node(r, c+1, 0);
 				now = head;
 			}
 			//data[CoordinatetoPointID(i, j + 1)][CoordinatetoPointID(i, j)] = 1;
@@ -48,12 +71,12 @@ AdjacentList::AdjacentList(int ** array, int row, int col)
 		{
 			if (head)
 			{
-				now->next = new node(i-1, j, 0);
+				now->next = new node(r-1, c, 0);
 				now = now->next;
 			}
 			else
 			{
-				head = new node(i-1, j, 0);
+				head = new node(r-1, c, 0);
 				now = head;
 			}
 		}
@@ -61,22 +84,33 @@ AdjacentList::AdjacentList(int ** array, int row, int col)
 		{
 			if (head)
 			{
-				now->next = new node(i+1,j, 0);
+				now->next = new node(r+1,c, 0);
 				now = now->next;
 			}
 			else
 			{
-				head = new node(i+1,j, 0);
+				head = new node(r+1,c, 0);
 				now = head;
 			}
 		}
 		return head;
 	});
-	/*for (int i = 0; i < row; i++)
+	/*for (int i = 0; i < drow; i++)
 	{
-		for (int j = 0; j < col; j++)
+		for (int j = 0; j < dcolumn; j++)
 		{
-			if(array[])
+			if (data[i][j])
+			{
+				node *head = data[i][j];
+				node *next = head;
+				printf("点(%d,%d)的邻接点是: ",i,j);
+				while (next)
+				{
+					printf("(%d,%d) ", next->x, next->y);
+					next = next->next;					
+				}
+				printf("\n");
+			}
 		}
 	}*/
 }

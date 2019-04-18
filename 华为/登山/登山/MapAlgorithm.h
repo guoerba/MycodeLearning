@@ -41,6 +41,8 @@ public:
 	AdjacentList();
 	AdjacentList(int **array,int row,int col);
 	~AdjacentList();
+	void BFS(int sx, int sy);
+	void DFS(int sx, int sy);
 private:
 	node ***data;
 	int size;
