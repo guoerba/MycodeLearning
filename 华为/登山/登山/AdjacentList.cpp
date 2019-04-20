@@ -4,24 +4,7 @@ AdjacentList::AdjacentList()
 {
 }
 
-AdjacentList::AdjacentList(int ** array, int row
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	\
-	
-	
-	
-	
-	
-	, int col)
+AdjacentList::AdjacentList(int ** array, int row,int col)
 	: drow(row),dcolumn(col)
 {
 	size = (row + 2) * (col + 2);
@@ -33,7 +16,7 @@ AdjacentList::AdjacentList(int ** array, int row
 			return -1;
 		return array[i - 1][j - 1];
 	});
-	/*std::cout << "------------------------------------------------------" << std::endl;
+	std::cout << "------------------------------------------------------" << std::endl;
 	for (int i = 0; i < row + 2; i++)
 	{
 		for (int j = 0; j < col + 2; j++)
@@ -42,16 +25,15 @@ AdjacentList::AdjacentList(int ** array, int row
 		}
 		std::cout << std::endl;
 	}
-	std::cout << "------------------------------------------------------" << std::endl;*/
+	std::cout << "------------------------------------------------------" << std::endl;
 	data = CreateArray2D<node*>(row, col,
 		[&](int r, int c)->node* {
 		node *head = NULL,*now = NULL;
-		int i = r + 1, j = c + 1;
+		int i = r + 1, j = c + 1;//if里是构建条件
 		if (p[i][j] < p[i][j - 1])		//左	
 		{
 			head = new node(r, c-1, 0);
 			now = head;
-			//data[CoordinatetoPointID(i, j - 1)][CoordinatetoPointID(i, j)] = 1;
 		}
 		if (p[i][j] < p[i][j + 1])//右
 		{
@@ -65,7 +47,6 @@ AdjacentList::AdjacentList(int ** array, int row
 				head = new node(r, c+1, 0);
 				now = head;
 			}
-			//data[CoordinatetoPointID(i, j + 1)][CoordinatetoPointID(i, j)] = 1;
 		}
 		if (p[i][j] < p[i - 1][j])//上
 		{
@@ -95,7 +76,7 @@ AdjacentList::AdjacentList(int ** array, int row
 		}
 		return head;
 	});
-	/*for (int i = 0; i < drow; i++)
+	for (int i = 0; i < drow; i++)
 	{
 		for (int j = 0; j < dcolumn; j++)
 		{
@@ -112,7 +93,7 @@ AdjacentList::AdjacentList(int ** array, int row
 				printf("\n");
 			}
 		}
-	}*/
+	}
 }
 
 AdjacentList::~AdjacentList()
@@ -137,4 +118,9 @@ AdjacentList::~AdjacentList()
 	}
 	delete[] data;
 	data = NULL;
+}
+
+void AdjacentList::BFS(int sx, int sy)
+{
+
 }

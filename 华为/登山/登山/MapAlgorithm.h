@@ -29,13 +29,14 @@ private:
 
 };
 
-struct node {
+struct node {//邻接链表数据结构
 	int x;
 	int y;
 	node *next;
 	node():x(0),y(0),next(0){}
 	node(int x,int y,node *next):x(x),y(y),next(next){}
 };
+
 class AdjacentList {
 public:
 	AdjacentList();
