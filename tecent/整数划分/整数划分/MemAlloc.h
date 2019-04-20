@@ -1,6 +1,7 @@
 #pragma once
 #include <vector>
 #include <string>
+#include <functional>
 
 typedef std::vector<std::string>	StringBuffer;
 typedef std::string					String;
@@ -9,8 +10,8 @@ typedef std::string					String;
 class Array {
 	Array() :a(0),b(0),c(0), data(NULL),dtype(dimension_0) {  };
 	Array(int len) :a(len),b(0),c(0),dtype(dimension_1)
-	{ 
-		data = new T[len]; 		
+	{
+		data = new T[len];
 	}
 	Array(int row,int col) :a(row), b(col), c(0), dtype(dimension_2)
 	{
@@ -22,12 +23,12 @@ class Array {
 			for (int j = 0; j < col; j++)
 				p[i][j] = initialize;
 	}
-	~Array() 
+	~Array()
 	{
-		if (!data) 
+		if (!data)
 			return;
-		delete[] data; 
-		data = NULL; 
+		delete[] data;
+		data = NULL;
 	}
 	Array &operator = (const Array &b)
 	{
@@ -72,6 +73,14 @@ private:
 };*/
 
 template<class T>
+struct Coordinate {
+	T X;
+	T Y;
+	Coordinate(T x, T y) :X(x), Y(y) {}
+	Coordinate() :X(0), Y(0) {}
+};
+
+template<class T>
 T **CreateArray2D(int row, int col, T initialize)
 {
 	T **p = new T*[row];
@@ -94,6 +103,32 @@ std::vector<T> **CreateArray2D(int row, int col)
 	for (int i = 0; i < row; i++)
 		for (int j = 0; j < col; j++)
 			p[i][j] = std::vector<T>();
+	return p;
+}
+
+template<class T>
+T **CreateArray2D(int row, int col, std::function<T(int, int)> f)
+{
+	T **p = new T*[row];
+	*p = new T[row*col];
+	for (int i = 0; i < row; i++)
+		p[i] = *p + i * col;
+	for (int i = 0; i < row; i++)
+		for (int j = 0; j < col; j++)
+			p[i][j] = f(i, j);
+	return p;
+}
+
+template<class T>
+T **CreateArray2D(int row, int col, T **a, std::function<T(int, int, T**)> f)
+{
+	T **p = new T*[row];
+	*p = new T[row*col];
+	for (int i = 0; i < row; i++)
+		p[i] = *p + i * col;
+	for (int i = 0; i < row; i++)
+		for (int j = 0; j < col; j++)
+			p[i][j] = f(i, j, a);
 	return p;
 }
 
@@ -148,3 +183,7 @@ struct Array {
 		this->len = this->len + b.len;
 	}
 };
+
+
+
+int **ProduceMap();
