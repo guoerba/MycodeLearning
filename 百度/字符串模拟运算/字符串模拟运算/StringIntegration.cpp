@@ -163,6 +163,50 @@ String operator-(const String & str1, const StringIntegration & str2)
 	return StringIntegration(str1) - str2;
 }
 
+String operator*(const StringIntegration & str1, const StringIntegration & str2)
+{
+	bool isminus = (str1.s[0] == '-' && str2.s[0] != '-' || (str1.s[0] != '-' && str2.s[0] == '-')) ? true : false;//·ûºÅÅÐ¶Ï
+	String s1 = String(str1.s); String s2 = String(str2.s);
+	if (s1[0] == '-')
+		s1.erase(0, 1);
+	if (s2[0] == '-')
+		s2.erase(0, 1);
+	auto bitmultiply = [](const String &s, const char &c,int index)->String {
+		String ret;
+		char cbit = c - 48,carry = 0,a;
+		for (int i = s.size(), j = i - 1; i > 0; i--, j--)
+		{
+			a = (s[j] - 48)*cbit + carry;
+			carry = a / 10;
+			ret.push_back(a % 10 + 48);
+		}
+		if (carry)
+			ret.push_back(carry + 48);
+		for (int i = 0, size = ret.size(); i < (size >> 1); i++)
+			swap(ret[i], ret[size - i - 1]);
+		for (int i = 0; i < index; i++)
+			ret.push_back(48);
+		return ret;
+	};
+	//StringBuffer bitmultiplyresults(str2.s.size());
+	StringIntegration ret("0");
+	for (int i = s2.size(), j = 0; i > 0; i--,j++)
+		ret += bitmultiply(s1, s2[i - 1],j);
+	if (isminus)
+		ret.s.insert(0, 1, '-');
+	return ret.s;
+}
+
+String operator*(const StringIntegration & str1, const String & str2)
+{
+	return str1 * StringIntegration(str2);
+}
+
+String operator*(const String & str1, const StringIntegration & str2)
+{
+	return StringIntegration(str1) * str2;
+}
+
 StringIntegration & StringIntegration::operator++(){
 	char a,carry = 1;
 	for (int i = s.size(), j = i - 1; i > 0; i--, j--)
@@ -183,6 +227,18 @@ StringIntegration StringIntegration::operator++(int)
 	StringIntegration old = *this;
 	++(*this);
 	return old;
+}
+
+StringIntegration & StringIntegration::operator+=(const String & str)
+{
+	*this = *this + str;
+	return *this;
+}
+
+StringIntegration & StringIntegration::operator+=(const StringIntegration & str)
+{
+	*this = *this + str;
+	return *this;
 }
 
 StringIntegration & StringIntegration::operator--()
@@ -208,7 +264,31 @@ StringIntegration StringIntegration::operator--(int)
 	return old;
 }
 
-const String & StringIntegration::string() 
+StringIntegration & StringIntegration::operator-=(const String & str)
+{
+	*this = *this - str;
+	return *this;
+}
+
+StringIntegration & StringIntegration::operator-=(const StringIntegration & str)
+{
+	*this = *this - str;
+	return *this;
+}
+
+StringIntegration & StringIntegration::operator*=(const String & str)
+{
+	*this = *this * str;
+	return *this;
+}
+
+StringIntegration & StringIntegration::operator*=(const StringIntegration & str)
+{
+	*this = *this * str;
+	return *this;
+}
+
+const String & StringIntegration::string()
 {
 	return s;
 }

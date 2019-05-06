@@ -4,9 +4,10 @@
 
 int main()
 {
-	StringIntegration s("20600");
+	StringIntegration s("-4562");
 	//String r = (s + );
-	std::cout << StringIntegration("125") - s << std::endl;
+	s *= String("-24");
+	std::cout << s.string() << std::endl;
 	while (1);
 	return 0;
 }
