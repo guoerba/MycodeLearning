@@ -54,20 +54,22 @@ int Combination(int m, int n);//C(m.n)
 std::vector<Song> FindCombination(int x, int y, int a, int b, int k)
 {
 	std::vector<Song>songnum;
-	for (int i = 1; i <= x; i++)
+	for (int i = 0; i <= x; i++)
 	{
-		for (int j = 1; j <= y; j++)
+		for (int j = 0; j <= y; j++)
 		{
-			//printf("%d * %d + %d * %d = %d\n", a, i, b, j, a*i + b * j);
 			if (a * i + b * j == k)
-				songnum.push_back(Song(i, j));
+			{
+				printf("%d * %d + %d * %d = %d\n", a, i, b, j, a*i + b * j);songnum.push_back(Song(i, j));
+			}
+				
 		}
 	}
 	return songnum;
 }
 
 
-
+#define M		67
 int main()
 {
 	int K, A, X, B, Y;
@@ -92,17 +94,17 @@ int main()
 			return 0;
 	};
 	int len = X > Y ? X + 1 : Y + 1;
-	long long **c = CreateArray2D<long long>(len,len,init);
+	long long **c = CreateArray2D<long long>(len, len, init);
 	Combination_YangHuiTriangle(c, len - 1, len - 1);
 	long long sum = 0;
 	for (int i = 0, size = songs.size(); i < size; i++)
 	{
-		long long combx = c[X][songs[i].numx],comby = c[Y][songs[i].numy];
-		printf("song[%d]=Song(%d,%d) combx:%lld comby:%lld sum[%d]:%lld\n", i, songs[i].numx, songs[i].numy,combx,comby,i,combx*comby);
+		long long combx = c[X][songs[i].numx], comby = c[Y][songs[i].numy];
+		printf("song[%d]=Song(%d,%d) combx:%lld comby:%lld sum[%d]:%lld\n", i, songs[i].numx, songs[i].numy, combx, comby, i, combx*comby);
 		sum += combx * comby;
 	}
 	DeleteArray2D(c);
-	printf("sum: %lld\n", sum % MOD);
+	printf("sum: %lld\n", sum % MOD); 
 	
 	//std::cout << Permutation(5, 2) << std::endl;
 	//std::cout << Factorial(3) << std::endl;
@@ -128,13 +130,13 @@ int Factorial(int n)//n!
 		f *= i;
 	return f;
 }
-int Combination(int m, int n)//C(m.n)
+int Combination(int m, int n)//C(m.n)暴力求解方法n<=15
 {
 	return Permutation(m, n) / Factorial(n);
 }
 
 template<class T>
-T Combination_YangHuiTriangle(T **c,int m, int n)
+T Combination_YangHuiTriangle(T **c,int m, int n)//杨辉三角形求解方法n较小n <= 10000
 {
 	for (int i = 1; i <= m; i++)
 	{
