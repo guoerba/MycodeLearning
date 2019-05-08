@@ -117,9 +117,11 @@
   <ItemGroup>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="StringIntegration.cpp" />
+    <ClCompile Include="StringIntOperationTest.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="StringIntegration.h" />
+    <ClInclude Include="StringIntOperationTest.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

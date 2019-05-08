@@ -21,9 +21,15 @@
     <ClCompile Include="StringIntegration.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="StringIntOperationTest.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="StringIntegration.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="StringIntOperationTest.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
