@@ -47,6 +47,12 @@ public:
 	friend bool operator == (const StringIntegration &str1, const StringIntegration &str2);
 	friend bool operator == (const String &str1, const StringIntegration &str2);
 	friend bool operator == (const StringIntegration &str1, const String &str2);
+	friend bool operator >= (const StringIntegration &str1, const StringIntegration &str2);
+	friend bool operator >= (const String &str1, const StringIntegration &str2);
+	friend bool operator >= (const StringIntegration &str1, const String &str2);
+	friend bool operator <= (const StringIntegration &str1, const StringIntegration &str2);
+	friend bool operator <= (const String &str1, const StringIntegration &str2);
+	friend bool operator <= (const StringIntegration &str1, const String &str2);
 	const String & string();
 private:
 	String s;

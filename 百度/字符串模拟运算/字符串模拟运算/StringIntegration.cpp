@@ -251,7 +251,7 @@ StringIntegration operator/(const StringIntegration & str1, const StringIntegrat
 			carry.s.push_back('0');
 		StringIntegration tempdivisor = divisor * carry;
 		char n = 48;
-		while (dividend > tempdivisor)
+		while (dividend >= tempdivisor)
 		{
 			dividend = dividend - tempdivisor;
 			n++;
@@ -265,6 +265,16 @@ StringIntegration operator/(const StringIntegration & str1, const StringIntegrat
 	if (isminus)
 		ret.insert(0, 1, '-');
 	return StringIntegration(ret);
+}
+
+StringIntegration operator/(const StringIntegration & str1, const String & str2)
+{
+	return str1 / StringIntegration(str2);
+}
+
+StringIntegration operator/(const String & str1, const StringIntegration & str2)
+{
+	return StringIntegration(str1) / str2;
 }
 
 bool operator>(const StringIntegration & str1, const StringIntegration & str2)
@@ -365,6 +375,36 @@ bool operator==(const String & str1, const StringIntegration & str2)
 bool operator==(const StringIntegration & str1, const String & str2)
 {
 	return str1 == StringIntegration(str2);
+}
+
+bool operator>=(const StringIntegration & str1, const StringIntegration & str2)
+{
+	return str1 > str2 || (str1 == str2);
+}
+
+bool operator>=(const String & str1, const StringIntegration & str2)
+{
+	return StringIntegration(str1) >= str2;
+}
+
+bool operator>=(const StringIntegration & str1, const String & str2)
+{
+	return str1 >= String(str2);
+}
+
+bool operator<=(const StringIntegration & str1, const StringIntegration & str2)
+{
+	return str1 < str2 || (str1 == str2);
+}
+
+bool operator<=(const String & str1, const StringIntegration & str2)
+{
+	return StringIntegration(str1) <= str2;
+}
+
+bool operator<=(const StringIntegration & str1, const String & str2)
+{
+	return str1 <= StringIntegration(str2);
 }
 
 StringIntegration & StringIntegration::operator++(){

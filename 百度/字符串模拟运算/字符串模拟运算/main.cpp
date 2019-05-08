@@ -13,7 +13,7 @@ int main()
 	//std::cout << s.string() << std::endl;
 	//std::cout << (StringIntegration("20") + String("39")).string() << std::endl;
 	//std::cout << (--ss).string() << std::endl;
-	std::cout << (StringIntegration("300") / StringIntegration("7")).string() << std::endl;
+	std::cout << (StringIntegration("30") / StringIntegration("6")).string() << std::endl;
 	//std::cout << (s > ss) << std::endl;
 	while (1);
 	return 0;
