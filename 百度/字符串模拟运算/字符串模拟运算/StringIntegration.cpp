@@ -103,6 +103,48 @@ StringIntegration operator+(const String & str1, const StringIntegration & str2)
 	return StringIntegration(str1) + str2;
 }
 
+StringIntegration & StringIntegration::operator++() {
+	char a, carry = 1;
+	/*for (int i = s.size(), j = i - 1; i > 0; i--, j--)
+	{
+		a = s[j] - 48 + carry;
+		carry = a / 10;
+		s[j] = a % 10 + 48;
+		if (!carry)
+			break;
+	}*/
+	for (auto rit = s.rbegin(); rit != s.rend(); ++rit)
+	{
+		a = *rit - 48 + carry;
+		carry = a / 10;
+		*rit = a % 10 + 48;
+		if (!carry)
+			break;
+	}
+	if (carry)
+		s.insert(s.begin(), 49);
+	return *this;
+}
+
+StringIntegration StringIntegration::operator++(int)
+{
+	StringIntegration old = *this;
+	++(*this);
+	return old;
+}
+
+StringIntegration & StringIntegration::operator+=(const String & str)
+{
+	*this = *this + str;
+	return *this;
+}
+
+StringIntegration & StringIntegration::operator+=(const StringIntegration & str)
+{
+	*this = *this + str;
+	return *this;
+}
+
 StringIntegration operator-(const StringIntegration & str1, const StringIntegration & str2)
 {
 	String ret;//返回值是局部变量，故不能用返回引用
@@ -192,6 +234,49 @@ StringIntegration operator-(const String & str1, const StringIntegration & str2)
 	return StringIntegration(str1) - str2;
 }
 
+StringIntegration & StringIntegration::operator--()
+{
+	char a, carry = 1;
+	/*for (int i = s.size(), j = i - 1; i > 0; i--, j--)
+	{
+		a = s[j] - 38 - carry;
+		carry = (a / 10) ^ 1;//异或，当a / 10 = 1时输出0；当a / 10 = 0时输出1
+		s[j] = a % 10 + 48;
+		if (!carry)
+			break;
+	}*/
+	for (auto rit = s.rbegin(); rit != s.rend(); ++rit)
+	{
+		a = *rit - 38 - carry;
+		carry = (a / 10) ^ 1;
+		*rit = a % 10 + 48;
+		if (!carry)
+			break;
+	}
+	if (!(s[0] - 48))
+		s.erase(0, 1);
+	return *this;
+}
+
+StringIntegration StringIntegration::operator--(int)
+{
+	StringIntegration old = *this;
+	--(*this);
+	return old;
+}
+
+StringIntegration & StringIntegration::operator-=(const String & str)
+{
+	*this = *this - str;
+	return *this;
+}
+
+StringIntegration & StringIntegration::operator-=(const StringIntegration & str)
+{
+	*this = *this - str;
+	return *this;
+}
+
 StringIntegration operator*(const StringIntegration & str1, const StringIntegration & str2)
 {
 	bool isminus = (str1.s[0] == '-' && str2.s[0] != '-' || (str1.s[0] != '-' && str2.s[0] == '-')) ? true : false;//符号判断
@@ -233,6 +318,18 @@ StringIntegration operator*(const StringIntegration & str1, const String & str2)
 StringIntegration operator*(const String & str1, const StringIntegration & str2)
 {
 	return StringIntegration(str1) * str2;
+}
+
+StringIntegration & StringIntegration::operator*=(const String & str)
+{
+	*this = *this * str;
+	return *this;
+}
+
+StringIntegration & StringIntegration::operator*=(const StringIntegration & str)
+{
+	*this = *this * str;
+	return *this;
 }
 
 StringIntegration operator/(const StringIntegration & str1, const StringIntegration & str2)
@@ -285,13 +382,18 @@ bool operator>(const StringIntegration & str1, const StringIntegration & str2)
 		return true;
 	if (str1.s[0] != '-' && str2.s[0] != '-')//都为正
 	{
-		if (str1.s.size() > str2.s.size())//str1更长
+		String s1 = str1.s, s2 = str2.s;
+		while (s1[0] == 48)
+			s1.erase(0, 1);
+		while (s2[0] == 48)
+			s2.erase(0, 1);
+		if (s1.size() > s2.size())//str1更长
 			return true;
-		else if (str1.s.size() < str2.s.size())
+		else if (s1.size() < s2.size())
 			return false;
 		else//一样长
 		{
-			for (auto it1 = str1.s.cbegin(), it2 = str2.s.cbegin(); it1 != str1.s.cend(); ++it1, ++it2)
+			for (auto it1 = s1.cbegin(), it2 = s2.cbegin(); it1 != s1.cend(); ++it1, ++it2)
 			{
 				if (*it1 > *it2)
 					return true;
@@ -306,6 +408,10 @@ bool operator>(const StringIntegration & str1, const StringIntegration & str2)
 	{
 		String s1 = str1.s, s2 = str2.s;
 		s1.erase(0, 1), s2.erase(0, 1);
+		while (s1[0] == 48)
+			s1.erase(0, 1);
+		while (s2[0] == 48)
+			s2.erase(0, 1);
 		if (s1.size() < s2.size())//str1更长
 			return true;
 		else if (s1.size() > s2.size())
@@ -353,11 +459,33 @@ bool operator<(const StringIntegration & str1, const String & str2)
 
 bool operator==(const StringIntegration & str1, const StringIntegration & str2)
 {
-	if (str1.s.size() != str2.s.size())
+	String s1 = str1.s, s2 = str2.s;
+	if (s1[0] == '-')//去除高位的0
+	{
+		while (s1[1] == 48)
+			s1.erase(1, 1);
+	}
+	else
+	{
+		while (s1[0] == 48)
+			s1.erase(0, 1);
+	}
+	if (s2[0] == '-')
+	{
+		while (s2[1] == 48)
+			s2.erase(1, 1);
+	}
+	else
+	{
+		while (s2[0] == 48)
+			s2.erase(0, 1);
+	}
+
+	if (s1.size() != s2.size())
 		return false;
 	else
 	{
-		for (auto it1 = str1.s.cbegin(), it2 = str2.s.cbegin(); it1 != str1.s.cend(); ++it1, ++it2)
+		for (auto it1 = s1.cbegin(), it2 = s2.cbegin(); it1 != s1.cend(); ++it1, ++it2)
 		{
 			if (*it1 != *it2)
 				return false;
@@ -405,103 +533,6 @@ bool operator<=(const String & str1, const StringIntegration & str2)
 bool operator<=(const StringIntegration & str1, const String & str2)
 {
 	return str1 <= StringIntegration(str2);
-}
-
-StringIntegration & StringIntegration::operator++(){
-	char a,carry = 1;
-	/*for (int i = s.size(), j = i - 1; i > 0; i--, j--)
-	{
-		a = s[j] - 48 + carry;
-		carry = a / 10;
-		s[j] = a % 10 + 48;
-		if (!carry)
-			break;
-	}*/
-	for (auto rit = s.rbegin(); rit != s.rend(); ++rit)
-	{
-		a = *rit - 48 + carry;
-		carry = a / 10;
-		*rit = a % 10 + 48;
-		if (!carry)
-			break;
-	}
-	if (carry)
-		s.insert(s.begin(),49);
-	return *this;
-}
-
-StringIntegration StringIntegration::operator++(int)
-{
-	StringIntegration old = *this;
-	++(*this);
-	return old;
-}
-
-StringIntegration & StringIntegration::operator+=(const String & str)
-{
-	*this = *this + str;
-	return *this;
-}
-
-StringIntegration & StringIntegration::operator+=(const StringIntegration & str)
-{
-	*this = *this + str;
-	return *this;
-}
-
-StringIntegration & StringIntegration::operator--()
-{
-	char a, carry = 1;
-	/*for (int i = s.size(), j = i - 1; i > 0; i--, j--)
-	{
-		a = s[j] - 38 - carry;
-		carry = (a / 10) ^ 1;//异或，当a / 10 = 1时输出0；当a / 10 = 0时输出1
-		s[j] = a % 10 + 48;
-		if (!carry)
-			break;
-	}*/
-	for (auto rit = s.rbegin(); rit != s.rend(); ++rit)
-	{
-		a = *rit - 38 - carry;
-		carry = (a / 10) ^ 1;
-		*rit = a % 10 + 48;
-		if (!carry)
-			break;
-	}
-	if (!(s[0] - 48))
-		s.erase(0, 1);
-	return *this;
-}
-
-StringIntegration StringIntegration::operator--(int)
-{
-	StringIntegration old = *this;
-	--(*this);
-	return old;
-}
-
-StringIntegration & StringIntegration::operator-=(const String & str)
-{
-	*this = *this - str;
-	return *this;
-}
-
-StringIntegration & StringIntegration::operator-=(const StringIntegration & str)
-{
-	*this = *this - str;
-	return *this;
-}
-
-StringIntegration & StringIntegration::operator*=(const String & str)
-{
-	*this = *this * str;
-	return *this;
-}
-
-StringIntegration & StringIntegration::operator*=(const StringIntegration & str)
-{
-	*this = *this * str;
-	return *this;
 }
 
 const String & StringIntegration::string()
