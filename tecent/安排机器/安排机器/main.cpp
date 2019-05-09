@@ -16,6 +16,7 @@
 来源：CSDN 
 原文：https://blog.csdn.net/weixin_33836874/article/details/87040827 
 版权声明：本文为博主原创文章，转载请附上博文链接！*/
+//双贪心，尽可能安排时间长的工作给相应等级的机器
 struct Machine {
 	int longgestWorkTime;
 	int rank;
