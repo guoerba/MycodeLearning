@@ -1,7 +1,11 @@
 #include <iostream>
 #include <stdio.h>
 #include <vector>
+#include <map>
 #include <algorithm>
+#include <stdlib.h>
+#include <chrono>
+#include <ctime>
 /*按照时间和等级降序，这样保证取到的一定是收益最大的解（因为时间的收益严格大于等级，
 所以时间作为第一关键字，如果能完成收益大的任务，自然不会去完成收益低的任务）；然后在
 此基础上，把所有工作时间大于等于任务的机器加入一个等级数组中，取出等级最接近任务等级
@@ -31,6 +35,11 @@ struct Task {
 	Task():time(0),rank(0){}
 	Task(int t,int r):time(t),rank(r){}
 };
+
+void GenerateTest(std::vector<Task> &tasks, int range_time, int range_rank);
+int emergerand(int upper, int lower);
+void test();
+
 int main()
 {
 	int n, m;
@@ -50,17 +59,111 @@ int main()
 		std::cin >> t >> r;
 		tasks[i] = Task(t, r);
 	}
-		
-	std::sort(tasks.begin(), tasks.end(), [](Task a, Task b)->bool {
-		return a.time > b.time;
+
+	std::sort(tasks.begin(), tasks.end(), [](const Task &a,const Task &b)->bool {
+		if (a.time > b.time)
+			return true;
+		else
+			return false;
 	});
-	printf("size of task %d\n", tasks.size());
-	for (auto i : tasks)
+
+	std::sort(machines.begin(), machines.end(), [](const Machine &a,const Machine &b)->bool {
+		if (a.longgestWorkTime > b.longgestWorkTime)
+			return true;
+		else
+			return false;
+	});
+
+	int biggestMachineRank = 0;
+	std::map< int, std::vector<Machine> >machineGroups;//等级数组
+	for (auto iter = machines.begin(); iter != machines.end(); ++iter)///找出最大的等级
 	{
+		if ((*iter).rank > biggestMachineRank)
+			biggestMachineRank = (*iter).rank;
+	}
 		
+	for (auto iter = machines.begin(); iter != machines.end(); ++iter)
+		machineGroups[(*iter).rank].push_back(*iter);
+
+	for (int i = 0; i <= biggestMachineRank; i++)
+	{
+		if (machineGroups[i].empty())
+		{
+			std::vector<Machine>init;
+			init.push_back(Machine(0, 0));
+			machineGroups[i] = init;
+		}
 	}
 
+	/*for (auto iter : machineGroups)
+	{
+		printf("等级数组%d\n", iter.first);
+		for (auto i : iter.second)
+		{
+			printf("Machine longgestWorkTime = %d,rank = %d\n", i.longgestWorkTime, i.rank);
+		}
+		printf("\n");
+	}*/
+
+	int finishedTasks = 0, profits = 0;
+	std::vector<int>machineGroupsIndex(biggestMachineRank + 1);//用来指明指定等级数组的最大工作时间机器的索引值
+	for (auto iter = machineGroupsIndex.begin(); iter != machineGroupsIndex.end(); ++iter)
+		*iter = 0;
+	for (auto iter = tasks.begin(); iter != tasks.end(); ++iter)
+	{
+		for (int r = (*iter).rank; r <= biggestMachineRank; r++)
+		{
+			if (machineGroupsIndex[r] < machineGroups[r].size())
+			{
+				if (machineGroups[r][machineGroupsIndex[r]].longgestWorkTime >= (*iter).time)//如果机器可以胜任这个工作
+				{
+					profits += 200 * (*iter).time + 3 * (*iter).rank;
+					++finishedTasks;
+					machineGroupsIndex[r] += 1;
+				}
+			}
+		}
+	}
+
+	std::cout << finishedTasks << " " << profits << std::endl;
+	//test();
 	
 	while (1);
 	return 0;
 }
+
+void GenerateTest( std::vector<Task> &tasks,int range_time,int range_rank)
+{
+	for (int i = 0, size = tasks.size(); i < size; i++)
+		tasks.push_back(Task(emergerand(range_time, 1), emergerand(range_rank, 1)));
+}
+
+int emergerand(int upper, int lower)
+{
+	return rand() % (upper - lower + 1) + lower;
+}
+
+void test()
+{
+	srand(std::chrono::seconds(std::time(NULL)).count());
+	std::vector<Task>tasks(50);
+	GenerateTest(tasks, 1000, 3);
+	for (auto i : tasks)
+	{
+		printf("Task time:%d rank:%d\n", i.time, i.rank);
+	}
+
+	std::sort(tasks.begin(), tasks.end(), [](const Task &a,const Task &b)->bool {
+		if (a.time > b.time)
+			return true;
+		else
+			return false;
+	});
+	printf("size of task %d\n", tasks.size());
+	printf("-----------------\n");
+	for (auto i : tasks)
+	{
+		printf("Task time:%d rank:%d\n", i.time, i.rank);
+	}
+}
+//测试代码

@@ -65,7 +65,7 @@ String StringIntOperationTest::RunTest()
 	return ret;
 }
 
-int StringIntOperationTest::emergerand(int upper, int lower)
-{
-	return rand() % (upper - lower + 1) + lower;
-}
+	int StringIntOperationTest::emergerand(int upper, int lower)
+	{
+		return rand() % (upper - lower + 1) + lower;
+	}
