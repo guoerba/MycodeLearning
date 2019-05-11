@@ -76,21 +76,21 @@ int main()
 
 	int biggestMachineRank = 0;
 	std::map< int, std::vector<Machine> >machineGroups;//等级数组
-	for (auto iter = machines.begin(); iter != machines.end(); ++iter)///找出最大的等级
+	for (auto iter = machines.begin(); iter != machines.end(); ++iter)//找出最大的等级
 	{
 		if ((*iter).rank > biggestMachineRank)
 			biggestMachineRank = (*iter).rank;
 	}
 		
-	for (auto iter = machines.begin(); iter != machines.end(); ++iter)
+	for (auto iter = machines.begin(); iter != machines.end(); ++iter)//将机器放到相应的等级数组中
 		machineGroups[(*iter).rank].push_back(*iter);
 
-	for (int i = 0; i <= biggestMachineRank; i++)
+	for (int i = 0; i <= biggestMachineRank; i++)//初始化没有分配到的
 	{
 		if (machineGroups[i].empty())
 		{
 			std::vector<Machine>init;
-			init.push_back(Machine(0, 0));
+			init.push_back(Machine(-1, -1));
 			machineGroups[i] = init;
 		}
 	}
@@ -104,22 +104,23 @@ int main()
 		}
 		printf("\n");
 	}*/
-
+		
 	int finishedTasks = 0, profits = 0;
 	std::vector<int>machineGroupsIndex(biggestMachineRank + 1);//用来指明指定等级数组的最大工作时间机器的索引值
 	for (auto iter = machineGroupsIndex.begin(); iter != machineGroupsIndex.end(); ++iter)
 		*iter = 0;
-	for (auto iter = tasks.begin(); iter != tasks.end(); ++iter)
+	for (auto iter = tasks.begin(); iter != tasks.end(); ++iter)//遍历任务
 	{
-		for (int r = (*iter).rank; r <= biggestMachineRank; r++)
+		for (int r = (*iter).rank; r <= biggestMachineRank; r++)//遍历等级大于等于任务等级的机器
 		{
-			if (machineGroupsIndex[r] < machineGroups[r].size())
+			if (machineGroupsIndex[r] < machineGroups[r].size())//如果该任务等级有机器
 			{
 				if (machineGroups[r][machineGroupsIndex[r]].longgestWorkTime >= (*iter).time)//如果机器可以胜任这个工作
 				{
 					profits += 200 * (*iter).time + 3 * (*iter).rank;
 					++finishedTasks;
 					machineGroupsIndex[r] += 1;
+					break;
 				}
 			}
 		}
