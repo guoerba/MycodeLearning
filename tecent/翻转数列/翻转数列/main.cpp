@@ -48,3 +48,9 @@ int main()
 	std::cout << sum << std::endl;
 	while (1);
 }
+/*用数学方法可以解决，链接：https://www.nowcoder.com/questionTerminal/cc0a71a1dfdb4c64a3ffe000f71ae12c
+来源：牛客网
+
+首先观察数列，我们可以将一组负正的数出现（如 - 1， - 2, 3, 4）看做一组，则n个数一共有n / (2m)组，而每一组求和结果为m*m，
+
+于是得到前n项和公式为Sn = n * m*m / 2m = m * n / 2*/
