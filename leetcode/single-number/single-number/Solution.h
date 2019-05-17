@@ -1,6 +1,7 @@
 #pragma once
 #include <algorithm>
 #include <stack>
+#include <iostream>
 
 template<class T>
 void Swap(T &a, T &b);
@@ -131,19 +132,152 @@ int Partition(T *A, int s, int e)
 }
 
 
-class Solution
-{
-public:
-	Solution();
-	~Solution();
-	int singleNumber(int A[], int n) {
-		QuickSortNoRecursion(A, n);
+namespace SingleNumber {
+	class Solution
+	{
+	public:
+		Solution() {};
+		~Solution() {};
+		int singleNumber(int A[], int n) {
+			QuickSortNoRecursion(A, n);
 			for (int i = 0; i < n - 1; i += 2)
 			{
 				if (A[i] != A[i + 1])
 					return A[i];
 			}
-		return A[n - 1];
-	}
+			return A[n - 1];
+		}
+	};
 };
 
+namespace MaxDepthBinaryTree {
+	struct TreeState;
+	struct TreeNode;
+	class Solution;
+
+	struct TreeState {
+		TreeNode *node;
+		int status;
+		int depth;
+		TreeState() :node(0), status(0),depth(0){}
+		TreeState(TreeNode *p,int s,int depth):node(p),status(s),depth(depth){}
+	};
+
+	struct TreeNode {
+		int val;
+		TreeNode *left;
+		TreeNode *right;
+		TreeNode() : val(0),left(NULL),right(NULL){}
+		TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+	};
+
+	class Solution {
+	public:
+		Solution():treeDepth(0){}
+		int maxDepth(TreeNode *root) {
+			SearchBinaryTree(root);
+			return treeDepth;
+		}
+		void SearchBinaryTree(TreeNode *root){
+			int state = 0,curDepth = 0;
+			std::stack<TreeState>s;
+			TreeNode *cur = root;
+			bool isdone = false;
+			while (!isdone)
+			{
+				if (!cur)//叶子节点									
+				{
+					state = s.top().status;//读取叶子节点父节点状态：1 则访问右子节点；2 则向上回溯	
+					cur = s.top().node;
+					curDepth = s.top().depth;
+				}													
+				switch (state)
+				{
+				case 0://搜寻左子树
+					std::cout << "val: " << cur->val << std::endl;
+					if (treeDepth < ++curDepth)
+						treeDepth = curDepth;
+					s.push(TreeState(cur,1,curDepth));//记录当前节点，以及下次访问时的状态，以及当前树高
+					cur = cur->left;//搜寻当前节点左子树
+					break;
+				case 1://搜寻右子树							
+					s.pop();					
+					s.push(TreeState(cur, 2, curDepth));//更新当前节点状态为2
+					state = 0;//下次继续搜寻当前节点右子树的左子树+
+					cur = cur->right;
+					break;
+				case 2://向上回溯
+					s.pop();//出栈
+					if (s.empty())//如果栈空，则代表已经遍历完成
+					{
+						isdone = true;
+						break;
+					}						
+					state = s.top().status;//读取当前节点父节点的状态
+					cur = s.top().node;
+					curDepth = s.top().depth;														
+				}
+			}
+		}
+		TreeNode* CreateBinaryTree()
+		{
+			std::cout << "请输入树根： " << std::endl;
+			int val;
+			std::cin >> val;
+			TreeNode *root = new TreeNode(val);
+			std::cout << "请输入root的左孩子：";
+			std::cin >> val;
+			std::cout << std::endl;
+			if (val > 0)
+			{
+				TreeNode *left = new TreeNode(val);
+				root->left = left;
+				CreateBinaryTree(root->left);
+			}
+			std::cout << "请输入root的右孩子：";
+			std::cin >> val;
+			std::cout << std::endl;
+			if (val > 0)
+			{
+				TreeNode *right = new TreeNode(val);
+				root->right = right;
+				CreateBinaryTree(root->right);
+			}
+			return root;
+		}
+		void CreateBinaryTree(TreeNode *node)
+		{
+			int val;
+			std::cout << "请输入关键字为" << node->val << "的左孩子：";
+			std::cin >> val;
+			std::cout << std::endl;
+			if (val > 0)
+			{
+				TreeNode *left = new TreeNode(val);
+				node->left = left;
+				CreateBinaryTree(node->left);
+			}
+			std::cout << "请输入关键字为" << node->val << "的右孩子：";
+			std::cin >> val;
+			std::cout << std::endl;
+			if (val > 0)
+			{
+				TreeNode *right = new TreeNode(val);
+				node->right = right;
+				CreateBinaryTree(node->right);
+			}
+
+		}
+		void DeleteBinaryTree(TreeNode *root)
+		{
+			if(root->left)
+				DeleteBinaryTree(root->left);
+			if(root->right)
+				DeleteBinaryTree(root->right);
+			delete root;
+			root = NULL;
+		}
+	private:
+		int treeDepth;
+	};
+}

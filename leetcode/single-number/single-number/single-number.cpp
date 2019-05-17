@@ -7,11 +7,17 @@ Your algorithm should have a linear runtime complexity. Could you implement it w
 
 */
 #include "pch.h"
+#include "Solution.h"
 #include <iostream>
 
 int main()
 {
     std::cout << "Hello World!\n"; 
+	MaxDepthBinaryTree::Solution s;
+	MaxDepthBinaryTree::TreeNode *root =  s.CreateBinaryTree();
+	std::cout << "树高为：" << s.maxDepth(root) << std::endl;
+
+	s.DeleteBinaryTree(root);
 }
 
 // 运行程序: Ctrl + F5 或调试 >“开始执行(不调试)”菜单
