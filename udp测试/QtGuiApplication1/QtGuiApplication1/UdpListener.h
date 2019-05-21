@@ -15,8 +15,12 @@ class UdpListener : public QObject
 public:
 	UdpListener(QObject *parent = NULL);
 	UdpListener(uint port,QObject *parent = NULL);
+	UdpListener(const QString &addr, uint port, QObject *parent = NULL);
 	~UdpListener();
 	void SendMsg(const char *msg,QHostAddress address,uint port);
+	void SendMsg(const QString &msg, QHostAddress address, uint port);
+	QString address() const;
+	uint port() const;
 signals:
 	void receiveDatagrams(QNetworkDatagram);
 private:
