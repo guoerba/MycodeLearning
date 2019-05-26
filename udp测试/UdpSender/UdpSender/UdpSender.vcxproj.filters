@@ -33,52 +33,29 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="QtGuiApplication1.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="UdpTest.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="UdpListener.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="UdpSender.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ThreadPool.cpp">
+    <ClCompile Include="Sender.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="QtGuiApplication1.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
-    <QtMoc Include="UdpListener.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
     <QtMoc Include="UdpSender.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="ThreadPool.h">
+    <QtMoc Include="Sender.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>
   <ItemGroup>
-    <QtUic Include="QtGuiApplication1.ui">
+    <QtUic Include="UdpSender.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>
   <ItemGroup>
-    <QtRcc Include="QtGuiApplication1.qrc">
+    <QtRcc Include="UdpSender.qrc">
       <Filter>Resource Files</Filter>
     </QtRcc>
-  </ItemGroup>
-  <ItemGroup>
-    <ResourceCompile Include="QtGuiApplication1.rc" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="UdpTest.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
   </ItemGroup>
 </Project>
