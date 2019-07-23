@@ -1,0 +1,8 @@
+﻿  alloc2darray.cpp
+g:\刷题\-\库文件\alloc2darray\alloc2darray\alloc2darray.cpp(6): warning C4273: “TestClass::getSum”: dll 链接不一致
+  g:\刷题\-\库文件\alloc2darray\alloc2darray\alloc2darray.h(92): note: 参见“getSum”的前一个定义
+    正在创建库 G:\刷题\-\库文件\alloc2darray\x64\Release\alloc2darray.lib 和对象 G:\刷题\-\库文件\alloc2darray\x64\Release\alloc2darray.exp
+  正在生成代码
+  All 1 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  已完成代码的生成
+  alloc2darray.vcxproj -> G:\刷题\-\库文件\alloc2darray\x64\Release\alloc2darray.dll
