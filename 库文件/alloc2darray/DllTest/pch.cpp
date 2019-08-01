@@ -1,3 +1,5 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:fb0eef450c0170abcd3e774bed9d1ba73f6358cae1ded14eaf92d082c71a69e5
-size 200
+﻿// pch.cpp: 与预编译标头对应的源文件；编译成功所必需的
+
+#include "pch.h"
+
+// 一般情况下，忽略此文件，但如果你使用的是预编译标头，请保留它。
