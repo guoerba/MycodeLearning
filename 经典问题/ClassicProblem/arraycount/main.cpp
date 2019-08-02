@@ -37,7 +37,27 @@ n K
 
 //容器作为参数传递是项目中常见做法，很少看到函数返回容器。
 //求出整数的划分，要求划分数各不相同
+//item:临时数组；res:结果数组；n:m的n划分 m:要求的整数
 void findcomb(std::string&item, int n, int m, std::string&res)
+{
+	if (n <= 0 || m <= 0)//递归停止条件，当划分n或总数m小于零，说明此次选择是错误的，直接回溯
+		return;
+	if (n == m)//当划分n等于总数时，说明此次选择是正确的，将n和之前的测试通过数加入到结果集中
+	{
+		res.append(item);
+		res.push_back(n + 48);
+		res.push_back(';');
+	}
+	item.push_back(n + 48);
+	findcomb(item, n - 1, m - n, res);//试验当n是和为m的组合数的情况
+	item.pop_back();//试验完成 弹出n
+	findcomb(item, n - 1, m, res);//试验当n不是m的组合数的情况
+}
+/*std::string item, result;
+	findcomb(item, 3, 3, result);
+	std::cout << result << std::endl;*/
+
+void findpartition(std::string&item, int n, int m, std::string&res)//找到m的n划分
 {
 	if (n <= 0 || m <= 0)
 		return;
@@ -47,14 +67,13 @@ void findcomb(std::string&item, int n, int m, std::string&res)
 		res.push_back(n + 48);
 		res.push_back(';');
 	}
-	item.push_back(n + 48);
-	findcomb(item, n - 1, m - n, res);
-	item.pop_back();
-	findcomb(item, n - 1, m, res);
+	for (int i = n; i > 0; i--)
+	{
+		item.push_back(i + 48);
+		findpartition(item, n - i, m - i, res);
+		item.pop_back();
+	}		
 }
-/*std::string item, result;
-	findcomb(item, 3, 3, result);
-	std::cout << result << std::endl;*/
 
 void generatearray(int num,std::vector<std::string>&sb)
 {
@@ -125,8 +144,11 @@ int main()
 		sum += pow(n, *it - 48);
 	std::cout << sum << std::endl;*/
 
-	std::string tmp, res;
+	/*std::string tmp, res;
 	findcomb(tmp, 5, 5, res);
+	std::cout << res << std::endl;*/
+	std::string tmp, res;
+	findpartition(tmp, 5, 5, res);
 	std::cout << res << std::endl;
 	while (1);
 	return 0;
