@@ -9,6 +9,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "childarraysum", "childarray
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "arraycount", "arraycount\arraycount.vcxproj", "{AEC29899-DF65-4ECC-8CDB-F262E532737C}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "IntegrationDivide", "IntegrationDivide\IntegrationDivide.vcxproj", "{E967B939-8828-49B2-AD16-8F386D066505}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -41,6 +43,14 @@ Global
 		{AEC29899-DF65-4ECC-8CDB-F262E532737C}.Release|x64.Build.0 = Release|x64
 		{AEC29899-DF65-4ECC-8CDB-F262E532737C}.Release|x86.ActiveCfg = Release|Win32
 		{AEC29899-DF65-4ECC-8CDB-F262E532737C}.Release|x86.Build.0 = Release|Win32
+		{E967B939-8828-49B2-AD16-8F386D066505}.Debug|x64.ActiveCfg = Debug|x64
+		{E967B939-8828-49B2-AD16-8F386D066505}.Debug|x64.Build.0 = Debug|x64
+		{E967B939-8828-49B2-AD16-8F386D066505}.Debug|x86.ActiveCfg = Debug|Win32
+		{E967B939-8828-49B2-AD16-8F386D066505}.Debug|x86.Build.0 = Debug|Win32
+		{E967B939-8828-49B2-AD16-8F386D066505}.Release|x64.ActiveCfg = Release|x64
+		{E967B939-8828-49B2-AD16-8F386D066505}.Release|x64.Build.0 = Release|x64
+		{E967B939-8828-49B2-AD16-8F386D066505}.Release|x86.ActiveCfg = Release|Win32
+		{E967B939-8828-49B2-AD16-8F386D066505}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
