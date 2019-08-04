@@ -25,7 +25,7 @@ IntegrateDivde::IntegrateDivde(int num, int n, Type t)
 	case	DifferentResult:finddifferent(n, num, temp, ares);
 	case	Different:res = finddifferentnumber(n, num);				//划分多个不同的整数
 		break;
-	case	FixedCountResult:
+	case	FixedCountResult://findfixedcount(n, num);
 	case	FixedCount:res = findfixedcountnumber(n, num);			//n划分成k个数的划分法
 		//break;
 	case	OddResult:
@@ -176,20 +176,38 @@ int IntegrateDivde::findfixedcountnumber(int n, int m)
 	return ret;
 }
 
-void IntegrateDivde::findfixedcount(int n, int m, std::string & temp, std::string & res)
+void IntegrateDivde::findfixedcount(int n, int m)
+{
+	std::vector<int>tmp(n);
+	for (int i = 0; i < n; i++)
+		tmp[i] = 0;
+	findfixedcount(n, m, tmp, ares);
+}
+
+void IntegrateDivde::findfixedcount(int n, int m, std::vector<int> & temp, std::string & res)
 {
 	if (n <= 0)
-		return;
-	if (m <= 0)
 	{
-		res.append(temp + ";");
+		for (auto it = temp.begin(); it != temp.end(); it++)
+			*it = 0;
 		return;
 	}
-	std::string s = std::to_string(1) + " ";
-	temp.append(s);
-	findfixedcount(n - 1, m - 1, temp, res);
-	temp.resize(temp.size() - s.size());
-	findfixedcount(n , m - n, temp, res);
+	if (m <= 0)
+	{
+		std::string rs;
+		for (auto it = temp.begin(); it != temp.end(); it++)
+			rs.append(std::to_string(*it) + " ");
+		res.append(rs + ";");
+		for (auto it = temp.begin(); it != temp.end(); it++)
+			*it = 0;
+		return;
+	}
+	
+	temp[n - 1] = 1;
+	findfixedcount(n - 1, m - 1, temp, res);//有一份为1
+	for (int i = 0; i < n; i++)
+		temp[i] += 1;
+	findfixedcount(n , m - n, temp, res);//不包含1
 }
 
 

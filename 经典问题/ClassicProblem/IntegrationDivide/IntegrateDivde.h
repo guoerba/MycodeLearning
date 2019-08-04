@@ -34,7 +34,8 @@ private:
 	void finddifferent(int n, int m, std::string&temp, std::string&res);//支持m大于9的版本
 
 	int findfixedcountnumber(int n, int m);
-	void findfixedcount(int n, int m, std::string&temp, std::string&res);
+	void findfixedcount(int n, int m);
+	void findfixedcount(int n, int m, std::vector<int>&temp, std::string&res);
 
 	
 
