@@ -23,7 +23,7 @@
     <ProjectGuid>{BB7AD3A1-86F7-421A-AD2D-A6A25CD3E8F3}</ProjectGuid>
     <RootNamespace>ClassicProblem</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
-    <ProjectName>bag01</ProjectName>
+    <ProjectName>01背包</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
