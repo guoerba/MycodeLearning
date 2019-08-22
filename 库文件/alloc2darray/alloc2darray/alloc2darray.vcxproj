@@ -144,8 +144,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="alloc2darray.cpp" />
+    <ClCompile Include="MSort.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="MSort.h" />
     <ClInclude Include="stringoperation.h" />
     <ClInclude Include="alloc2darray.h" />
     <ClInclude Include="StringIntegration.h" />

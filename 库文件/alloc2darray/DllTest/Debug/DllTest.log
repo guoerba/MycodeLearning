@@ -1,4 +1,23 @@
 ﻿  DllTest.cpp
-g:\刷题\-\库文件\alloc2darray\alloc2darray\stringintegration.h(60): warning C4251: “StringIntegration::s”: class“std::basic_string<char,std::char_traits<char>,std::allocator<char>>”需要有 dll 接口由 class“StringIntegration”的客户端使用
+d:\vs\刷题\库文件\alloc2darray\alloc2darray\stringintegration.h(60): warning C4251: “StringIntegration::s”: class“std::basic_string<char,std::char_traits<char>,std::allocator<char>>”需要有 dll 接口由 class“StringIntegration”的客户端使用
   c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.16.27023\include\xstring(4373): note: 参见“std::basic_string<char,std::char_traits<char>,std::allocator<char>>”的声明
-  DllTest.vcxproj -> G:\刷题\-\库文件\alloc2darray\Debug\DllTest.exe
+d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.h(29): warning C4091: “typedef ”: 没有声明变量时忽略“MSort<T>::SortFunction”的左侧
+  d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.h(54): note: 参见对正在编译的 类 模板 实例化 "MSort<T>" 的引用
+d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.h(53): warning C4251: “MSort<T>::comp”: class“std::function<bool(T,T)>”需要有 dll 接口由 class“MSort<T>”的客户端使用
+  d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.h(16): note: 参见“std::function<bool(T,T)>”的声明
+d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.h(76): warning C4251: “Heap<T>::comp”: class“std::function<bool(T,T)>”需要有 dll 接口由 class“Heap<T>”的客户端使用
+  d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.h(16): note: 参见“std::function<bool(T,T)>”的声明
+  d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.h(79): note: 参见对正在编译的 类 模板 实例化 "Heap<T>" 的引用
+d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.h(29): warning C4091: “typedef ”: 没有声明变量时忽略“MSort<int>::SortFunction”的左侧
+  d:\vs\刷题\库文件\alloc2darray\dlltest\dlltest.cpp(51): note: 参见对正在编译的 类 模板 实例化 "MSort<int>" 的引用
+d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.h(53): warning C4251: “MSort<int>::comp”: class“std::function<bool (T,T)>”需要有 dll 接口由 class“MSort<int>”的客户端使用
+          with
+          [
+              T=int
+          ]
+  d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.h(16): note: 参见“std::function<bool (T,T)>”的声明
+          with
+          [
+              T=int
+          ]
+  DllTest.vcxproj -> D:\vs\刷题\库文件\alloc2darray\Debug\DllTest.exe

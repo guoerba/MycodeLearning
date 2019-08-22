@@ -5,10 +5,11 @@
 #include "../alloc2darray/alloc2darray.h"
 #include "../alloc2darray/StringIntegration.h"
 #include "../alloc2darray/stringoperation.h"
+#include "../alloc2darray/MSort.h"
 #include <iostream>
 
 #pragma comment(lib,"..\\..\\alloc2darray\\Debug\\alloc2darray.lib")
-
+int a[] = { 4,7,2,3,9,11,1,5,8,30,59,29,10,6,7,34 };
 int main()
 {
    /* std::cout << "Hello World!\n"; 
@@ -37,12 +38,27 @@ int main()
 
 	std::vector<int>vv;
 	v.swap(vv);*/
-	std::string s("1;2;3;4");
+
+/*	std::string s("1;2;3;4");
 	StringBuffer sb;
 	StringOperation::split(s, sb, ';');
 	std::cout << s << std::endl;
 	for (auto i : sb)
-		std::cout << i << std::endl;
+		std::cout << i << std::endl;*/
+	for (int i = 0; i < 16; i++)
+		std::cout << a[i] << " ";
+	std::cout << std::endl;
+	MSort<int>s(a, 16, MSort<int>::heap, [](int a, int b) {
+		if (a < b)
+			return true;
+		else
+			return false;
+	});
+	int *b = s.data();
+	for (int i = 0; i < 16; i++)
+		std::cout << b[i] << " ";
+	std::cout << std::endl;
+	s.free();
 }
 
 // 运行程序: Ctrl + F5 或调试 >“开始执行(不调试)”菜单

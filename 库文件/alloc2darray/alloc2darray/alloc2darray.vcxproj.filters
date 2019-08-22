@@ -18,6 +18,9 @@
     <ClCompile Include="alloc2darray.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="MSort.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="alloc2darray.h">
@@ -27,6 +30,9 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="stringoperation.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="MSort.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
