@@ -10,6 +10,7 @@
 
 #pragma comment(lib,"..\\..\\alloc2darray\\Debug\\alloc2darray.lib")
 int a[] = { 4,7,2,3,9,11,1,5,8,30,59,29,10,6,7,34 };
+//int a[] = { 1,4,6,8,9,2,3,5,7 };
 int main()
 {
    /* std::cout << "Hello World!\n"; 
@@ -48,7 +49,7 @@ int main()
 	for (int i = 0; i < 16; i++)
 		std::cout << a[i] << " ";
 	std::cout << std::endl;
-	MSort<int>s(a, 16, MSort<int>::heap, [](int a, int b) {
+	MSort<int>s(a, 16, MSort<int>::count, [](int a, int b) {
 		if (a < b)
 			return true;
 		else

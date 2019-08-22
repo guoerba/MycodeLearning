@@ -22,8 +22,8 @@ MSort<T>::MSort(T *array, uint n, SortFunction sf, Compare func)
 	case shell: ShellSort(); break;
 	case quick: QuickSort(); break;
 	case heap: HeapSort(); break;
-	case merge:
-	case count:
+	case merges:MergeSort(); break;
+	case count:CountSort(); break;
 	case radix:
 	case bucket:break;
 	}
@@ -155,6 +155,48 @@ void MSort<T>::HeapSort()
 }
 
 template<typename T>
+void MSort<T>::MergeSort()
+{
+	uint tmpsize = (len + 1) >> 1;
+	T *b = new T[tmpsize];
+	T *c = new T[tmpsize];
+	uint right = len - 1;
+	for (uint i = 1; i < len; i <<= 1)
+	{
+		for (uint j = 0, size = len - i, step = i << 1; j < size; j += step)
+		{
+			uint r = j + step - 1;
+			uint m = (j + r) >> 1;
+			merge(b, c, j, m, r < right ? r : right);
+		}
+	}
+	delete[]b;
+	delete[]c;
+}
+
+template<typename T>
+void MSort<T>::CountSort()
+{
+	T max = a[0];
+	for (uint i = 0; i < len; i++)
+		if (a[i] > max)
+			max = a[i];
+	uint *b = new uint[max + 1];
+	for (uint i = 0; i <= max; i++)
+		b[i] = 0;
+	for (uint i = 0; i < len; i++)
+		b[a[i]]++;
+	for (uint i = 0,j = 0; i <= max; i++)
+	{
+		uint count = b[i];
+		while (count--)
+			a[j++] = i;
+	}
+	delete[]b;
+
+}
+
+template<typename T>
 void MSort<T>::swap(T & a, T & b)
 {
 	if (a == b)
@@ -179,32 +221,41 @@ uint MSort<T>::partition(uint mid, uint l, uint r)//返回mid的最后位置[l,r]
 }
 
 template<typename T>
-void MSort<T>::keepheap(T * heap, uint heaplen)
+void MSort<T>::merge(uint l, uint m, uint r)
 {
-	for (uint j = heaplen; j > 1 ; j /= 2)
+	uint leftlen = m - l + 1, rightlen = r - m;
+	T *b = new T[leftlen];
+	T *c = new T[rightlen];
+	for (uint i = 0; i < leftlen; i++)b[i] = a[l + i];
+	for (uint i = 0; i < rightlen; i++)c[i] = a[m + i + 1];
+
+	for (uint k = l, i = 0, j = 0; k <= r; k++)
 	{
-		uint before = j / 2 - 1, now = j - 1;
-		if (comp(heap[now], heap[before]))
-			swap(heap[before], heap[now]);
-		else
-			break;
+		if (i >= leftlen)a[k] = c[j++];
+		else if (j >= rightlen)a[k] = b[i++];
+		else a[k] = comp(b[i], c[j]) ? b[i++] : c[j++];
 	}
+
+	delete[]c;
+	delete[]b;
 }
 
 template<typename T>
-void MSort<T>::buildheap()
+void MSort<T>::merge(T * b, T * c, uint l, uint m, uint r)
 {
-	T *heap = new T[len];
-	uint heapsize = 0;
-	for (uint i = 0; i < len; i++)
+	uint leftlen = m - l + 1, rightlen = r - m;
+	for (uint i = 0; i < leftlen; i++)b[i] = a[l + i];
+	for (uint i = 0; i < rightlen; i++)c[i] = a[m + i + 1];
+
+	for (uint k = l, i = 0, j = 0; k <= r; k++)
 	{
-		heap[heapsize++] = a[i];
-		keepheap(heap, heapsize);
+		if (i >= leftlen)a[k] = c[j++];
+		else if (j >= rightlen)a[k] = b[i++];
+		else a[k] = comp(b[i], c[j]) ? b[i++] : c[j++];
 	}
-	for (uint i = 0; i < len; i++)
-		a[i] = heap[i];
-	delete[]heap;
+
 }
+
 
 template class MSort<short>;
 template class MSort<unsigned short>;

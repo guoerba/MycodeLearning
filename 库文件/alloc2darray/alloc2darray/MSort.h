@@ -22,7 +22,7 @@ public:
 		shell,
 		quick,
 		heap,
-		merge,
+		merges,
 		count,
 		radix,
 		bucket,
@@ -41,11 +41,13 @@ private:
 	void ShellSort();
 	void QuickSort();
 	void HeapSort();
+	void MergeSort();
+	void CountSort();
 
 	void swap(T &a,T &b);
 	uint partition(uint mid,uint l,uint r);
-	void keepheap(T *a,uint heaplen);
-	void buildheap();
+	void merge(uint l,uint m,uint r);
+	void merge(T *b, T *c, uint l, uint m, uint r);
 
 	T *a;
 	uint len;

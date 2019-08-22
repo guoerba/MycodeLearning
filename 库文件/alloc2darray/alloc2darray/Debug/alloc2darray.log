@@ -1,14 +1,14 @@
 ﻿  MSort.cpp
 d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.h(29): warning C4091: “typedef ”: 没有声明变量时忽略“MSort<T>::SortFunction”的左侧
-  d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.h(54): note: 参见对正在编译的 类 模板 实例化 "MSort<T>" 的引用
-d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.h(53): warning C4251: “MSort<T>::comp”: class“std::function<bool(T,T)>”需要有 dll 接口由 class“MSort<T>”的客户端使用
+  d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.h(56): note: 参见对正在编译的 类 模板 实例化 "MSort<T>" 的引用
+d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.h(55): warning C4251: “MSort<T>::comp”: class“std::function<bool(T,T)>”需要有 dll 接口由 class“MSort<T>”的客户端使用
   d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.h(16): note: 参见“std::function<bool(T,T)>”的声明
-d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.h(76): warning C4251: “Heap<T>::comp”: class“std::function<bool(T,T)>”需要有 dll 接口由 class“Heap<T>”的客户端使用
+d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.h(78): warning C4251: “Heap<T>::comp”: class“std::function<bool(T,T)>”需要有 dll 接口由 class“Heap<T>”的客户端使用
   d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.h(16): note: 参见“std::function<bool(T,T)>”的声明
-  d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.h(79): note: 参见对正在编译的 类 模板 实例化 "Heap<T>" 的引用
+  d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.h(81): note: 参见对正在编译的 类 模板 实例化 "Heap<T>" 的引用
 d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.h(29): warning C4091: “typedef ”: 没有声明变量时忽略“MSort<short>::SortFunction”的左侧
-  d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.cpp(209): note: 参见对正在编译的 类 模板 实例化 "MSort<short>" 的引用
-d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.h(53): warning C4251: “MSort<short>::comp”: class“std::function<bool (T,T)>”需要有 dll 接口由 class“MSort<short>”的客户端使用
+  d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.cpp(260): note: 参见对正在编译的 类 模板 实例化 "MSort<short>" 的引用
+d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.h(55): warning C4251: “MSort<short>::comp”: class“std::function<bool (T,T)>”需要有 dll 接口由 class“MSort<short>”的客户端使用
           with
           [
               T=short
@@ -19,8 +19,8 @@ d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.h(53): warning C4251: “
               T=short
           ]
 d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.h(29): warning C4091: “typedef ”: 没有声明变量时忽略“MSort<unsigned short>::SortFunction”的左侧
-  d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.cpp(210): note: 参见对正在编译的 类 模板 实例化 "MSort<unsigned short>" 的引用
-d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.h(53): warning C4251: “MSort<unsigned short>::comp”: class“std::function<bool (T,T)>”需要有 dll 接口由 class“MSort<unsigned short>”的客户端使用
+  d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.cpp(261): note: 参见对正在编译的 类 模板 实例化 "MSort<unsigned short>" 的引用
+d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.h(55): warning C4251: “MSort<unsigned short>::comp”: class“std::function<bool (T,T)>”需要有 dll 接口由 class“MSort<unsigned short>”的客户端使用
           with
           [
               T=unsigned short
@@ -31,8 +31,8 @@ d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.h(53): warning C4251: “
               T=unsigned short
           ]
 d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.h(29): warning C4091: “typedef ”: 没有声明变量时忽略“MSort<int>::SortFunction”的左侧
-  d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.cpp(211): note: 参见对正在编译的 类 模板 实例化 "MSort<int>" 的引用
-d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.h(53): warning C4251: “MSort<int>::comp”: class“std::function<bool (T,T)>”需要有 dll 接口由 class“MSort<int>”的客户端使用
+  d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.cpp(262): note: 参见对正在编译的 类 模板 实例化 "MSort<int>" 的引用
+d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.h(55): warning C4251: “MSort<int>::comp”: class“std::function<bool (T,T)>”需要有 dll 接口由 class“MSort<int>”的客户端使用
           with
           [
               T=int
@@ -43,8 +43,8 @@ d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.h(53): warning C4251: “
               T=int
           ]
 d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.h(29): warning C4091: “typedef ”: 没有声明变量时忽略“MSort<unsigned int>::SortFunction”的左侧
-  d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.cpp(212): note: 参见对正在编译的 类 模板 实例化 "MSort<unsigned int>" 的引用
-d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.h(53): warning C4251: “MSort<unsigned int>::comp”: class“std::function<bool (T,T)>”需要有 dll 接口由 class“MSort<unsigned int>”的客户端使用
+  d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.cpp(263): note: 参见对正在编译的 类 模板 实例化 "MSort<unsigned int>" 的引用
+d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.h(55): warning C4251: “MSort<unsigned int>::comp”: class“std::function<bool (T,T)>”需要有 dll 接口由 class“MSort<unsigned int>”的客户端使用
           with
           [
               T=unsigned int
@@ -55,8 +55,8 @@ d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.h(53): warning C4251: “
               T=unsigned int
           ]
 d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.h(29): warning C4091: “typedef ”: 没有声明变量时忽略“MSort<long>::SortFunction”的左侧
-  d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.cpp(213): note: 参见对正在编译的 类 模板 实例化 "MSort<long>" 的引用
-d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.h(53): warning C4251: “MSort<long>::comp”: class“std::function<bool (T,T)>”需要有 dll 接口由 class“MSort<long>”的客户端使用
+  d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.cpp(264): note: 参见对正在编译的 类 模板 实例化 "MSort<long>" 的引用
+d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.h(55): warning C4251: “MSort<long>::comp”: class“std::function<bool (T,T)>”需要有 dll 接口由 class“MSort<long>”的客户端使用
           with
           [
               T=long
@@ -67,8 +67,8 @@ d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.h(53): warning C4251: “
               T=long
           ]
 d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.h(29): warning C4091: “typedef ”: 没有声明变量时忽略“MSort<unsigned long>::SortFunction”的左侧
-  d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.cpp(214): note: 参见对正在编译的 类 模板 实例化 "MSort<unsigned long>" 的引用
-d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.h(53): warning C4251: “MSort<unsigned long>::comp”: class“std::function<bool (T,T)>”需要有 dll 接口由 class“MSort<unsigned long>”的客户端使用
+  d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.cpp(265): note: 参见对正在编译的 类 模板 实例化 "MSort<unsigned long>" 的引用
+d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.h(55): warning C4251: “MSort<unsigned long>::comp”: class“std::function<bool (T,T)>”需要有 dll 接口由 class“MSort<unsigned long>”的客户端使用
           with
           [
               T=unsigned long
@@ -79,8 +79,8 @@ d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.h(53): warning C4251: “
               T=unsigned long
           ]
 d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.h(29): warning C4091: “typedef ”: 没有声明变量时忽略“MSort<__int64>::SortFunction”的左侧
-  d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.cpp(215): note: 参见对正在编译的 类 模板 实例化 "MSort<__int64>" 的引用
-d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.h(53): warning C4251: “MSort<__int64>::comp”: class“std::function<bool (T,T)>”需要有 dll 接口由 class“MSort<__int64>”的客户端使用
+  d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.cpp(266): note: 参见对正在编译的 类 模板 实例化 "MSort<__int64>" 的引用
+d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.h(55): warning C4251: “MSort<__int64>::comp”: class“std::function<bool (T,T)>”需要有 dll 接口由 class“MSort<__int64>”的客户端使用
           with
           [
               T=__int64
@@ -91,8 +91,8 @@ d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.h(53): warning C4251: “
               T=__int64
           ]
 d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.h(29): warning C4091: “typedef ”: 没有声明变量时忽略“MSort<unsigned __int64>::SortFunction”的左侧
-  d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.cpp(216): note: 参见对正在编译的 类 模板 实例化 "MSort<unsigned __int64>" 的引用
-d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.h(53): warning C4251: “MSort<unsigned __int64>::comp”: class“std::function<bool (T,T)>”需要有 dll 接口由 class“MSort<unsigned __int64>”的客户端使用
+  d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.cpp(267): note: 参见对正在编译的 类 模板 实例化 "MSort<unsigned __int64>" 的引用
+d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.h(55): warning C4251: “MSort<unsigned __int64>::comp”: class“std::function<bool (T,T)>”需要有 dll 接口由 class“MSort<unsigned __int64>”的客户端使用
           with
           [
               T=unsigned __int64
@@ -102,7 +102,7 @@ d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.h(53): warning C4251: “
           [
               T=unsigned __int64
           ]
-d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.h(76): warning C4251: “Heap<T>::comp”: class“std::function<bool (T,T)>”需要有 dll 接口由 class“Heap<T>”的客户端使用
+d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.h(78): warning C4251: “Heap<T>::comp”: class“std::function<bool (T,T)>”需要有 dll 接口由 class“Heap<T>”的客户端使用
           with
           [
               T=short
@@ -119,8 +119,12 @@ d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.h(76): warning C4251: “
           ]
   d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.cpp(149): note: 编译 类 模板 成员函数 "void MSort<short>::HeapSort(void)" 时
   d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.cpp(24): note: 参见对正在编译的函数 模板 实例化“void MSort<short>::HeapSort(void)”的引用
-  d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.cpp(209): note: 参见对正在编译的 类 模板 实例化 "MSort<short>" 的引用
-d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.h(76): warning C4251: “Heap<T>::comp”: class“std::function<bool (T,T)>”需要有 dll 接口由 class“Heap<T>”的客户端使用
+  d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.cpp(260): note: 参见对正在编译的 类 模板 实例化 "MSort<short>" 的引用
+d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.cpp(185): warning C4018: “<=”: 有符号/无符号不匹配
+  d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.cpp(179): note: 编译 类 模板 成员函数 "void MSort<short>::CountSort(void)" 时
+  d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.cpp(26): note: 参见对正在编译的函数 模板 实例化“void MSort<short>::CountSort(void)”的引用
+d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.cpp(189): warning C4018: “<=”: 有符号/无符号不匹配
+d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.h(78): warning C4251: “Heap<T>::comp”: class“std::function<bool (T,T)>”需要有 dll 接口由 class“Heap<T>”的客户端使用
           with
           [
               T=unsigned short
@@ -137,8 +141,8 @@ d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.h(76): warning C4251: “
           ]
   d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.cpp(149): note: 编译 类 模板 成员函数 "void MSort<unsigned short>::HeapSort(void)" 时
   d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.cpp(24): note: 参见对正在编译的函数 模板 实例化“void MSort<unsigned short>::HeapSort(void)”的引用
-  d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.cpp(210): note: 参见对正在编译的 类 模板 实例化 "MSort<unsigned short>" 的引用
-d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.h(76): warning C4251: “Heap<T>::comp”: class“std::function<bool (T,T)>”需要有 dll 接口由 class“Heap<T>”的客户端使用
+  d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.cpp(261): note: 参见对正在编译的 类 模板 实例化 "MSort<unsigned short>" 的引用
+d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.h(78): warning C4251: “Heap<T>::comp”: class“std::function<bool (T,T)>”需要有 dll 接口由 class“Heap<T>”的客户端使用
           with
           [
               T=int
@@ -155,8 +159,8 @@ d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.h(76): warning C4251: “
           ]
   d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.cpp(149): note: 编译 类 模板 成员函数 "void MSort<int>::HeapSort(void)" 时
   d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.cpp(24): note: 参见对正在编译的函数 模板 实例化“void MSort<int>::HeapSort(void)”的引用
-  d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.cpp(211): note: 参见对正在编译的 类 模板 实例化 "MSort<int>" 的引用
-d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.h(76): warning C4251: “Heap<T>::comp”: class“std::function<bool (T,T)>”需要有 dll 接口由 class“Heap<T>”的客户端使用
+  d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.cpp(262): note: 参见对正在编译的 类 模板 实例化 "MSort<int>" 的引用
+d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.h(78): warning C4251: “Heap<T>::comp”: class“std::function<bool (T,T)>”需要有 dll 接口由 class“Heap<T>”的客户端使用
           with
           [
               T=unsigned int
@@ -173,8 +177,8 @@ d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.h(76): warning C4251: “
           ]
   d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.cpp(149): note: 编译 类 模板 成员函数 "void MSort<unsigned int>::HeapSort(void)" 时
   d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.cpp(24): note: 参见对正在编译的函数 模板 实例化“void MSort<unsigned int>::HeapSort(void)”的引用
-  d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.cpp(212): note: 参见对正在编译的 类 模板 实例化 "MSort<unsigned int>" 的引用
-d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.h(76): warning C4251: “Heap<T>::comp”: class“std::function<bool (T,T)>”需要有 dll 接口由 class“Heap<T>”的客户端使用
+  d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.cpp(263): note: 参见对正在编译的 类 模板 实例化 "MSort<unsigned int>" 的引用
+d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.h(78): warning C4251: “Heap<T>::comp”: class“std::function<bool (T,T)>”需要有 dll 接口由 class“Heap<T>”的客户端使用
           with
           [
               T=long
@@ -191,8 +195,8 @@ d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.h(76): warning C4251: “
           ]
   d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.cpp(149): note: 编译 类 模板 成员函数 "void MSort<long>::HeapSort(void)" 时
   d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.cpp(24): note: 参见对正在编译的函数 模板 实例化“void MSort<long>::HeapSort(void)”的引用
-  d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.cpp(213): note: 参见对正在编译的 类 模板 实例化 "MSort<long>" 的引用
-d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.h(76): warning C4251: “Heap<T>::comp”: class“std::function<bool (T,T)>”需要有 dll 接口由 class“Heap<T>”的客户端使用
+  d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.cpp(264): note: 参见对正在编译的 类 模板 实例化 "MSort<long>" 的引用
+d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.h(78): warning C4251: “Heap<T>::comp”: class“std::function<bool (T,T)>”需要有 dll 接口由 class“Heap<T>”的客户端使用
           with
           [
               T=unsigned long
@@ -209,8 +213,8 @@ d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.h(76): warning C4251: “
           ]
   d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.cpp(149): note: 编译 类 模板 成员函数 "void MSort<unsigned long>::HeapSort(void)" 时
   d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.cpp(24): note: 参见对正在编译的函数 模板 实例化“void MSort<unsigned long>::HeapSort(void)”的引用
-  d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.cpp(214): note: 参见对正在编译的 类 模板 实例化 "MSort<unsigned long>" 的引用
-d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.h(76): warning C4251: “Heap<T>::comp”: class“std::function<bool (T,T)>”需要有 dll 接口由 class“Heap<T>”的客户端使用
+  d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.cpp(265): note: 参见对正在编译的 类 模板 实例化 "MSort<unsigned long>" 的引用
+d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.h(78): warning C4251: “Heap<T>::comp”: class“std::function<bool (T,T)>”需要有 dll 接口由 class“Heap<T>”的客户端使用
           with
           [
               T=__int64
@@ -227,8 +231,15 @@ d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.h(76): warning C4251: “
           ]
   d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.cpp(149): note: 编译 类 模板 成员函数 "void MSort<__int64>::HeapSort(void)" 时
   d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.cpp(24): note: 参见对正在编译的函数 模板 实例化“void MSort<__int64>::HeapSort(void)”的引用
-  d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.cpp(215): note: 参见对正在编译的 类 模板 实例化 "MSort<__int64>" 的引用
-d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.h(76): warning C4251: “Heap<T>::comp”: class“std::function<bool (T,T)>”需要有 dll 接口由 class“Heap<T>”的客户端使用
+  d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.cpp(266): note: 参见对正在编译的 类 模板 实例化 "MSort<__int64>" 的引用
+d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.cpp(184): warning C4244: “初始化”: 从“T”转换到“unsigned int”，可能丢失数据
+          with
+          [
+              T=__int64
+          ]
+  d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.cpp(179): note: 编译 类 模板 成员函数 "void MSort<__int64>::CountSort(void)" 时
+  d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.cpp(26): note: 参见对正在编译的函数 模板 实例化“void MSort<__int64>::CountSort(void)”的引用
+d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.h(78): warning C4251: “Heap<T>::comp”: class“std::function<bool (T,T)>”需要有 dll 接口由 class“Heap<T>”的客户端使用
           with
           [
               T=unsigned __int64
@@ -245,5 +256,13 @@ d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.h(76): warning C4251: “
           ]
   d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.cpp(149): note: 编译 类 模板 成员函数 "void MSort<unsigned __int64>::HeapSort(void)" 时
   d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.cpp(24): note: 参见对正在编译的函数 模板 实例化“void MSort<unsigned __int64>::HeapSort(void)”的引用
-  d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.cpp(216): note: 参见对正在编译的 类 模板 实例化 "MSort<unsigned __int64>" 的引用
+  d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.cpp(267): note: 参见对正在编译的 类 模板 实例化 "MSort<unsigned __int64>" 的引用
+d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.cpp(184): warning C4244: “初始化”: 从“T”转换到“unsigned int”，可能丢失数据
+          with
+          [
+              T=unsigned __int64
+          ]
+  d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.cpp(179): note: 编译 类 模板 成员函数 "void MSort<unsigned __int64>::CountSort(void)" 时
+  d:\vs\刷题\库文件\alloc2darray\alloc2darray\msort.cpp(26): note: 参见对正在编译的函数 模板 实例化“void MSort<unsigned __int64>::CountSort(void)”的引用
+    正在创建库 D:\vs\刷题\库文件\alloc2darray\Debug\alloc2darray.lib 和对象 D:\vs\刷题\库文件\alloc2darray\Debug\alloc2darray.exp
   alloc2darray.vcxproj -> D:\vs\刷题\库文件\alloc2darray\Debug\alloc2darray.dll
