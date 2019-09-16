@@ -39,7 +39,7 @@ void * bag01(int V,int n,const std::vector<int>&w,const std::vector<int>&v)
 			}
 			else
 			{
-				p[i][j] = max(p[i - 1][j - w[k]] + v[k], p[i - 1][j]);//第i个物品的重量小于等于背包容量的时候，选择价值最大的选项
+				p[i][j] = max(p[i - 1][j - w[k]] + v[k], p[i - 1][j]);//第i个物品的重量小于等于	背包容量的时候，选择价值最大的选项
 			}
 		}
 	}
