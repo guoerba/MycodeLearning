@@ -1,0 +1,6 @@
+//github网站访问加速
+https://www.cnblogs.com/jiannanchun/p/15397235.html
+
+//git clone代理设置;设置到root目录下的.gitconfig才有用
+git config --global http.proxy socks5://127.0.0.1:1080
+git config --global https.proxy socks5://127.0.0.1:1080
