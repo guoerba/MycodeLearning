@@ -1,4 +1,0 @@
-﻿  main.cpp
-g:\刷题\-\tecent\编码\编码\main.cpp(34): warning C4018: “<”: 有符号/无符号不匹配
-g:\刷题\-\tecent\编码\编码\main.cpp(38): warning C4244: “+=”: 从“double”转换到“int”，可能丢失数据
-  编码.vcxproj -> G:\刷题\-\tecent\编码\Debug\编码.exe

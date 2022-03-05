@@ -1,8 +1,0 @@
-﻿  main.cpp
-d:\vs\刷题\tecent\安排机器\安排机器\main.cpp(116): warning C4018: “<”: 有符号/无符号不匹配
-d:\vs\刷题\tecent\安排机器\安排机器\main.cpp(149): warning C4244: “参数”: 从“_Rep”转换到“unsigned int”，可能丢失数据
-          with
-          [
-              _Rep=__int64
-          ]
-  安排机器.vcxproj -> D:\vs\刷题\tecent\安排机器\Debug\安排机器.exe
