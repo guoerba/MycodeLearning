@@ -4,8 +4,14 @@ ifneq ($(KERNELRELEASE),)
 obj-m += char_mem_dev.o
 
 else
-#外部模块Makefile代码	
-KDIR ?= /lib/modules/$(shell uname -r)/build
+#外部模块Makefile代码
+
+#都可以作为源代码目录
+#编译内核后出现的目录
+#KDIR ?= /lib/modules/$(shell uname -r)/build
+
+#.o .ko文件目录
+KDIR ?= /lib/modules/linux-master
 
 all: modules install
 #内核kbuild为外部makefile提供了四个target:
