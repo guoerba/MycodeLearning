@@ -1,0 +1,47 @@
+1.原子操作
+void atomic_set(atomic_t *v, int i);
+void atomic_add(int i, atomic_t *v);
+void atomic_sub(int i, atomic_t *v);
+void atomic_inc(atomic_t *v);
+void atomic_inc_and_test(atomic_t *v);
+void atomic_add_and_test(int i, atomic_t *v);
+void atomic_add_and_test(int i, atomic_t *v);
+
+2.锁
+2.1自旋锁
+	忙等待，无调度开销
+	进程抢占被禁止
+	锁定期间不能睡觉
+		spinlock_t lock;
+		spin_lock_init(&lock);
+		spin_lock(&lock); // 获取自旋锁，保护临界区
+		...临界区
+		spin_unlock(&lock); // 解锁
+2.2信号量
+	拿不到就切换进程，有调度开销
+	锁定期间可以睡觉，不用于中断上下文
+		DECLARE_MUTEX(mount_sem);
+		down(&mount_sem); //获取信号量，保护临界区
+		...临界区
+		up(&mount_sem); // 释放信号量
+2.3互斥量（代替信号量）
+		#include <linux/mutex.h>
+		/*静态声明一个互斥量，如果需要动态创建一个互斥量，使用mutex_init()*/
+		static DEFINE_MUTEX(mutex);
+		mutex_lock(&mutex);
+		...临界区
+		mutex_unlock(&mutex);
+2.4读写锁
+	多个执行单元被允许同时进入临界区，读者自旋锁可以这样定义：
+		rwlock_t rwlock = RW_LOCK_UNLOCKED;
+		read_lock(&rwlock);
+		...临界区
+		read_unlock(&rwlock);
+	如果一个写执行单元，其他的读和写都不被允许进入：
+		rwlock_t rwlock = RW_LOCK_UNLOCKED;
+		write_lock(&rwlock);
+		...临界区
+		write_unlock(&rwlock);
+2.5读-拷贝-更新（RCU）
+	其基本理念是读执行单元不需要加锁，但是写执行单元会变得更加复杂，它们会在数据结构的一份拷贝上执行更新操作
+3.同步
