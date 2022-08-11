@@ -115,20 +115,20 @@
 
 ————————————————
 5.Linux内核延时
-	5.1忙等待（cpu空转）
-		/*等待发生在不能引起睡眠的情况*/
-		void ndelay(unsigned long nsecs);
-		void udelay(unsigned long usecs);
-		void mdelay(unsigned long msecs);
-		/*延迟100个jiffies*/
-		unsigned long delay = jiffies + 100;
-		while(time_before(jiffies, delay));
+5.1忙等待（cpu空转）
+	/*等待发生在不能引起睡眠的情况*/
+	void ndelay(unsigned long nsecs);
+	void udelay(unsigned long usecs);
+	void mdelay(unsigned long msecs);
+	/*延迟100个jiffies*/
+	unsigned long delay = jiffies + 100;
+	while(time_before(jiffies, delay));
 
-		/*再延迟2s*/
-		unsigned long delay = jiffies + 2*HZ
-		while(time_before(jiffies, delay));
-		
-	5.2睡眠延时(将cpu释放给别的线程)
+	/*再延迟2s*/
+	unsigned long delay = jiffies + 2*HZ
+	while(time_before(jiffies, delay));
+	
+5.2睡眠延时(将cpu释放给别的线程)
 	void msleep(unsigned int millisecs);
 	unsigned long msleep_interruptible(unsigned int millisecs);
 	void ssleep(unsigned int seconds);
@@ -174,3 +174,23 @@
 			add_timer(&dev->xxx_timer);
 			...
 		}
+
+————————————————
+7.软中断
+7.1Tasklet
+	/*定义tasklet和底半部函数并关联*/
+	void xxx_do_tasklet(unsigned long);
+	DECLARE_TASKLET(xxx_tasklet, xxx_do_tasklet, 0);// 定义了一个名为xxx_tasklet的tasklet_struct结构体的实例
+	/*中断处理底半部函数*/
+	void xxx_do_tasklet(unsigned long)
+	{
+		...
+	}
+	/*中断处理顶半部*/
+	irqreturn_t xxx_interrupt(int irq, void *dev_id, struct pt_regs *regs)
+	{
+		...
+		tasklet_schedule(&xxx_tasklet);
+		...
+	}
+	
