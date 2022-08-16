@@ -6,20 +6,17 @@
 #include <linux/slab.h>
 #include <linux/device.h>
 
+#include "char_mem_dev_cmd.h"
 // 入参（默认值）
 static char *name = "Guo";
 static int num = 1000;
-
-struct CharMemory {
-	int size;
-	char *mem;
-};
 
 struct CharMemoryDev {
 	int major;
 	struct class *class;
 	struct device *device;
-	struct CharMemory mem;
+	int size;
+	char *mem;
 };
 static struct CharMemoryDev *chrdev = NULL;
 
@@ -27,26 +24,69 @@ static struct CharMemoryDev *chrdev = NULL;
 
 static int char_mem_open(struct inode *node, struct file *file)
 {
+	if (chrdev->mem == NULL) {
+		chrdev->mem = (char*)kzalloc(num * sizeof(char), GFP_KERNEL);
+		chrdev->size = num;
+	}
+	file->private_data = chrdev;
 	return 0;
 }
 
 static int char_mem_release(struct inode *node, struct file *file)
 {
+	struct CharMemoryDev *c = file->private_data;
+	kfree(c->mem);
 	return 0;
 }
 
 static ssize_t char_mem_read(struct file *file, char __user *buf, size_t count, loff_t *ppos)
 {
-	return 0;
+	struct CharMemoryDev *c = file->private_data;
+	char *mem = c->mem;
+	int size = c->size;
+	if (*ppos + count > size) {
+		count = size - *ppos;
+	}
+	if (copy_to_user(buf, mem + *ppos, count)) {
+		printk("copy_to_user error\n");
+		return -EFAULT;
+	}
+	*ppos += count;
+	return count;
 }
 
 static ssize_t char_mem_write(struct file *file, const char __user *buf, size_t count, loff_t *ppos)
 {
-	return 0;
+	struct CharMemoryDev *c = file->private_data;
+	char *mem = c->mem;
+	int size = c->size;
+	if (*ppos + count > size) {
+		printk("write range out of memory\n");
+		return -ENOMEM;
+	}
+	if (copy_from_user(mem + *ppos, buf, count)) {
+		printk("copy_from_user error\n");
+		return -EFAULT;
+	}
+	*ppos += count;		
+	return count;
 }
 
-static loff_t char_mem_llseek(struct file *file, loff_t ppos, int org)
+static loff_t char_mem_llseek(struct file *file, loff_t offset, int whence)
 {
+	return default_llseek(file, offset, whence);
+}
+
+static long char_mem_ioctl(struct file *file, unsigned int cmd, unsigned long arg)
+{
+	struct CharMemoryDev *c = file->private_data;
+	char *mem = c->mem;
+	int size = c->size;
+	switch (cmd) {
+		case CLEAR_ZERO:
+			memset(mem, 0, size * sizeof(char));
+			break;
+	}
 	return 0;
 }
 
@@ -56,6 +96,7 @@ static struct file_operations fops = {
 	.llseek = char_mem_llseek,
 	.open = char_mem_open,
 	.release = char_mem_release,
+	.unlocked_ioctl = char_mem_ioctl,
 };
 
 static int __init char_mem_dev_init(void)
