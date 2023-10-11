@@ -11,7 +11,7 @@ else
 #KDIR ?= /lib/modules/$(shell uname -r)/build
 
 #.o .ko文件目录
-KDIR ?= /lib/modules/linux-master
+KDIR ?= /lib/modules/$(shell uname -r)/build
 
 all: modules install
 #内核kbuild为外部makefile提供了四个target:
