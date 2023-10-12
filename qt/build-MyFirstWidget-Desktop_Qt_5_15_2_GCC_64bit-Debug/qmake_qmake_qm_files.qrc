@@ -1,0 +1,5 @@
+<!DOCTYPE RCC><RCC version="1.0">
+<qresource prefix="i18n">
+<file alias="MyFirstWidget_zh_CN.qm">/home/guo/MycodeLearning/qt/build-MyFirstWidget-Desktop_Qt_5_15_2_GCC_64bit-Debug/.qm/MyFirstWidget_zh_CN.qm</file>
+</qresource>
+</RCC>
