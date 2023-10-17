@@ -2,7 +2,9 @@
 #define KEYEVENT_H
 
 #include <QWidget>
-
+#include <QEvent>
+#include <QKeyEvent>
+#include <QLabel>
 class KeyEvent : public QWidget
 {
     Q_OBJECT
@@ -11,6 +13,10 @@ public:
 
 signals:
 
+protected:
+    void keyPressEvent(QKeyEvent *event);
+private:
+    QLabel *label;
 };
 
 #endif // KEYEVENT_H
