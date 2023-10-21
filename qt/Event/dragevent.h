@@ -2,6 +2,7 @@
 #define DRAGEVENT_H
 
 #include <QWidget>
+#include "texteditx.h"
 
 class DragEvent : public QWidget
 {
@@ -10,7 +11,8 @@ public:
     explicit DragEvent(QWidget *parent = nullptr);
 
 signals:
-
+private:
+    TextEditX *textEdit;
 };
 
 #endif // DRAGEVENT_H

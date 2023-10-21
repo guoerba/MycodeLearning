@@ -19,6 +19,7 @@ SOURCES += \
     paintevent.cpp \
     rightclickedevent.cpp \
     summarize.cpp \
+    texteditx.cpp \
     timerevent.cpp
 
 HEADERS += \
@@ -31,6 +32,7 @@ HEADERS += \
     paintevent.h \
     rightclickedevent.h \
     summarize.h \
+    texteditx.h \
     timerevent.h
 
 # Default rules for deployment.
